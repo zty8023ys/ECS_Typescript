@@ -1,6 +1,6 @@
-import BaseComponent from "./component/BaseComponent"
-import BaseEntity from "./entity/BaseEntity"
-import BaseSystem from "./system/BaseSystem"
+import { BaseComponent } from "./component/BaseComponent";
+import { BaseSystem } from "./system/BaseSystem";
+import { BaseEntity } from "./entity/BaseEntity";
 
 export {
     BaseComponent,

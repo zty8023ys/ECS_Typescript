@@ -1,7 +1,7 @@
 import { BaseComponent } from "../ECS";
-import BaseClass from "../BaseClass";
+import { BaseClass, BaseIdType } from "../BaseClass";
 
-export default class BaseEntity extends BaseClass {
+export class BaseEntity extends BaseClass<BaseIdType.BaseEntityIdType> {
     private component: { [name: string]: BaseComponent } = {};
 
     addComponent<T extends BaseComponent>(component: new () => T): T {
@@ -9,7 +9,8 @@ export default class BaseEntity extends BaseClass {
             return this.getComponent(component);
         }
         const componentInstance = new component();
-        this.component[component.name] = componentInstance;
+        componentInstance.entity = this;
+        this.component[componentInstance.constructor.name] = componentInstance;
         return componentInstance;
     }
     getComponent<T extends BaseComponent>(component: new () => T): T {

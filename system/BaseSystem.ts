@@ -1,8 +1,9 @@
-import BaseClass from "../BaseClass";
+import { BaseClass, BaseIdType } from "../BaseClass";
 import { BaseComponent, BaseEntity } from "../ECS";
 
-export default abstract class BaseSystem extends BaseClass {
-    entities: BaseEntity[] = [];
+export abstract class BaseSystem extends BaseClass<BaseIdType.BaseSystemIdType> {
+    public entities: BaseEntity[] = [];
+    public context: any;
     protected watchComponents: typeof BaseComponent[] = [];
 
     checkWatch<T extends BaseEntity>(entity: T): boolean {

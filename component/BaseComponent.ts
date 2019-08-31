@@ -1,5 +1,6 @@
-import BaseClass from "../BaseClass";
+import { BaseIdType, BaseClass } from "../BaseClass";
+import { BaseEntity } from "../ECS";
 
-export default abstract class BaseComponent extends BaseClass {
-    abstract init(...args: any): BaseComponent;
+export class BaseComponent extends BaseClass<BaseIdType.BaseComponentIdType> {
+    public entity: BaseEntity = null;
 }
